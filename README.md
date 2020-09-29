@@ -1,4 +1,4 @@
-# Responsive_Portfolio
+# Code_Quiz
 * View the [GitHub-repo](https://github.com/girmaD/Code_Quiz)
 * View the [depolyed application](https://girmad.github.io/Code_Quiz/)
 ___
@@ -9,27 +9,30 @@ ___
 * [How To Use The App](#How-To-Use-The-App)
 * [Contact](Contact)
 ## Introduction
-This application  generates a random password based on user-selected criteria. This app runs in the browser and feature dynamically updated HTML and CSS powered by your JavaScript code. It also features a clean and polished user interface and is responsive, ensuring that it adapts to multiple screen sizes.
+This application is a code quiz made using HTML, Bootstrap and vanila javaScript. It runs on the browser. And it features a dynamically updated HTML and Bootstrap made possible by the awesome power of JavaScript. The questions are code related and are timed. Getting the correct answer for each question will get you a score of 10 and incorrect/incorrect will be displayed each time you clicked on your answer. Correct is displayed in green and incorrect is displayed in red.
+
+When you finish the questions or when the time is up - you will be led to a different page - that takes your initials as input and that displays your score. When you submit your initials - you score lists will be populated.
 
 ## Objective
-
-The objective of this application is to create a random password that meets certain criteria so that the newly created password provides greater security.
+THe objective is build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code. It has a clean, polished, and responsive user interface.
 
 ## Snap shot of the UI
 
-![Alt text](./Assets/img.png)
+![Alt text](./Assets/frontPage.png)
+
 
 ## How To Use The App
 
-1. Click **Generate Password** button
-2. You will be prompted with a question asking *how many charaters you like your password to have*. You will be notified to enter a number that is between 8 and 128.
-3. You will then be prompted with a yes or no question asking *whether you like uppercase letters be included in your password*
-4. You will then be prompted with a yes or no question asking *whether you like lowercase letters be included in your password*
-5. You will then be prompted with a yes or no question asking *whether you like special characters be included in your password*
-6. You will then be prompted with a yes or no question asking *whether you like numbers be included in your password*
-7. After taking all the inputs from prompts and confirms - a new password will be generated and displayed in textbox area.
+1. Click **Start Quiz** button
+2. You will be displayed with a multiple choice question. And also the time will start counting down.
+![Alt text](./Assets/quizPage.png)
+3. You will then have the option to click on the answer. When you click your answer - the app tells you whether your answer is *corrct* or *incorrect*. If your answer is incorrect the time will be cut by additional 20 seconds.
+4. When either the countdown is over or when you are done with the questions - new page that shows your score and that takes your initials as input will be displayed.
+![Alt text](./Assets/initialsPage.png)
+5. Enter your initials on the text input and click enter.
+6. Your intials and score will be populated on a new page. This pay also contains a button that gives you the chance to play agian. If you would like to *play again*, click play again button, the game will start all over again
+![Alt text](./Assets/scoreListsPage.png)
 
-However, if the criteria are not met, you will be asked to enter valid responses in each step. For the password to be successfully generated, your password should have a length between 8 and 128 characters and you have to select at least one character type to be included in the password. Otherwise, you will be alerted and prompted with the approprate information and told to enter a valid and acceptable input.
 
 ## Contact
 
