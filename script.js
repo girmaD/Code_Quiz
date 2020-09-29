@@ -38,6 +38,7 @@ const scorepageEl = document.querySelector("#scorepage" );
 const finalScoreEL = document.querySelector("#finalScore" );
 const highScoresDiv = document.querySelector("#highScores" );
 const showscoresEL = document.querySelector("#showscores" );
+const playAgainBtn = document.querySelector("#playAgain" );
 
 
 
@@ -137,9 +138,14 @@ let newScoreEl = document.createElement("p");
 // newScoreEl.textContent = scoresArr[0].name + ": " + scoresArr[0].yourScore;
 showscoresEL.appendChild(newScoreEl);
 
+// click the playAgain button to go back to home page
+playAgainBtn.addEventListener("click", function(){
+    return location.assign("index.html");
+})
+
 
 // function scoreBoard(){
-    localStorage.setItem("highScores", JSON.stringify(scoresArr));
+localStorage.setItem("highScores", JSON.stringify(scoresArr));
 // }
 // startQuiz();//i could do on click on the startQUIZ BUTTON;
 startBtn.addEventListener("click", startQuiz);
