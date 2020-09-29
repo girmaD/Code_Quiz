@@ -56,6 +56,31 @@
     <div id="evaluation" class="d-none container m-3 p-1 bg-light w-50 mx-auto">
         <p class="lead" id="correct"></p>
     </div>
+    <div id="scorepage" class="d-none container text-center mt-5">
+        <div id="end" class="">
+          <h1 >Your Score is <span id="finalScore"></span></h1>
+          <form class="form-inline" >
+            <form action="" class="form-group">
+              <label for="initials"><h3>Your Initials</h3></label>
+              <input type="text" name="initials" id="initials" placeholder="initials"/>            
+              <button type="submit" class="btn btn-success btn-sm mb-4 ml-3" id="saveScoreBtn">
+                Save
+              </button> 
+            </form>           
+          </form>         
+          
+         
+          
+        </div>
+      </div>
+      <div id="highScores" class="d-none">
+        <div id="showscores">
+            <h3>Lead Scorers</h3>
+        </div>
+        <div>
+            <a class="btn btn-info btn-lg" href="./play.html">Play Again</a>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
