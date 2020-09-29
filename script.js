@@ -4,17 +4,32 @@ var myQuestions = [
     {
         question: "What DOES JS stand for??",
         choices : ["JamSpace", "JustScraps", "JavaScript", "JazzSinger"],
+        answer : 2
+    },
+    {
+        question: "Which one of the following is a front-end liberary?",
+        choices : ["Node", "Express", "mongoDB", "jQuery"],
+        answer : 3
+    },
+    {
+        question: "Array is a special form of an object in JS",
+        choices : ["true", "false", "I don't know", "unrelated"],
         answer : 0
     },
     {
-        question: "What DOESNOT JS stand for?",
-        choices : ["JAMSpace", "JustScraps", "JavaScript", "JazzSinger"],
-        answer : 0
+        question: "Which one of the following is a reserved keyword in JS",
+        choices : ["this", "new", "let", "All"],
+        answer : 3
     },
     {
-        question: "What does JS stand for???",
-        choices : ["JamSpace", "JustDoIt", "JavaScript", "JazzSinger"],
-        answer : 0
+        question: "JavaScript Objects can be created with the following syntax",
+        choices : ["let obj = []", "let obj = {}", "let obj = ''", "let obj = ()"],
+        answer : 1
+    },
+    {
+        question: "A variable declared as global variable can",
+        choices : ["not be accessed inside a function", "not be accessed inside a loop", "can be accessed anywhere", "can not be used anywhere"],
+        answer : 2
     }
 ]
 
