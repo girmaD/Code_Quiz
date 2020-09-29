@@ -9,20 +9,25 @@
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <!-- introductory message -->
-    <div id="home" class="container m-5 p-5 text-center">
+    <!-- introductory message: as the fisrt to be displayed on the app -->
+    <!-- ============================================================== -->
+    <div id="home" class="container m-5 p-5 text-center bg-light w-75 mx-auto">
         <div  class="d-flex flex-column justify-content-center" >
             <h1>Code Quiz</h1>
-            <p class="lead">Try to answer the following code related questions. Getting the correct answer will get you score of 10. If you get it wrong, your time will be cut by 20 seconds. You have 60 secods to answe all the questions. When you answer all the questions or when the time is over, you will be asked to enter your initials, and your score with initials will be diplayed.</p>            
+            <p class="lead">Try to answer the following code related questions. Getting the correct answer on each question will get you score of 10. If you get it wrong, your time will be cut by 20 seconds. You have 60 seconds to answer all the questions. When you answer all the questions or when the time is over, you will be asked to enter your initials, and your score with initials will be diplayed.</p>            
             <!-- <a href="game.html"><button class="btn btn-secondary btn-lg mb-3">start quiz</button></a>     -->
-            <button class="btn btn-success btn-lg" id="startBtn">Start Quiz</button>        
+            <button class="btn btn-success mx-auto btn-lg" id="startBtn">Start Quiz</button>        
         </div>
     </div>
+    <!-- ======================================================= -->
     <!-- displaying the timeLeft on top -->
+    <!-- ======================================================= -->
     <div id="timer" class="d-none container w-50 mx-auto">
         <p class="lead float-right"><span id="timeleft">60</span> seconds left </p>
     </div>
-    <!-- game format and content -->
+    <!-- ======================================================== -->
+    <!-- the questions: the main content of the page - displayed after you click the start button -->
+    <!-- ====================================================== -->
     <div id="main" class="d-none m-5 p-5 bg-light w-50 mx-auto">
         <div class="container ">
             <div class="row bg-secondary text-white justify-content-center">
@@ -31,54 +36,60 @@
                 </div>                
             </div>
             
-            <div class="row my-5 ">                
-                <div class="col-3">
-                    <!-- <button id="choice1" class="btn btn-secondary text-white">choice 1</button> -->
-                    <button id="choice1" class="btn btn-secondary text-white"  onclick="checkAnswer(0)">choice 1</button>
+            <div class="row my-5 justify-content-between">                
+                <div class="col-5 ">                    
+                    <button id="choice1" class="btn btn-secondary text-white w-100"  onclick="checkAnswer(0)">choice 1</button>
                 </div>                
-                <div class="col-3">
-                    <!-- <button id="choice2" class="btn btn-secondary text-white">choice 2</button> -->
-                    <button id="choice2" class="btn btn-secondary text-white"  onclick="checkAnswer(1)">choice 2</button>
+                <div class="col-5 ">                    
+                    <button id="choice2" class="btn btn-secondary text-white w-100"  onclick="checkAnswer(1)">choice 2</button>
                 </div>                
             </div>
-            <div class="row">
-                <div  class="col-3">
-                    <!-- <button id="choice3" class="btn btn-secondary text-white">choice 3</button> -->
-                    <button id="choice3" class="btn btn-secondary text-white"  onclick="checkAnswer(2)">choice 3</button>
+            <div class="row justify-content-between">
+                <div  class="col-5">                    
+                    <button id="choice3" class="btn btn-secondary text-white w-100"  onclick="checkAnswer(2)">choice 3</button>
                 </div>                
-                <div class="col-3">
-                    <!-- <button id="choice4" class="btn btn-secondary text-white">choice 4</button> -->
-                    <button id="choice4" class="btn btn-secondary text-white"  onclick="checkAnswer(3)">choice 4</button>
+                <div class="col-5">                    
+                    <button id="choice4" class="btn btn-secondary text-white w-100"  onclick="checkAnswer(3)">choice 4</button>
                 </div>  
             </div>
         </div>
     </div>
+    <!-- ============================================================ -->
+    <!-- the div that shows whether the answer chosen is correct or incorrect at the bottom of the page -->
+    <!-- =========================================================== -->
     <div id="evaluation" class="d-none container m-3 p-1 bg-light w-50 mx-auto">
-        <p class="lead" id="correct"></p>
+        <p class="lead font-weight-bold" id="correct"></p>
     </div>
-    <div id="scorepage" class="d-none container text-center mt-5">
-        <div id="end" class="">
-          <h1 >Your Score is <span id="finalScore"></span></h1>
-          <form class="form-inline" >
+    <!-- ========================================================== -->
+    <!-- the end page that displays the score and takes in initals as  -->
+    <!-- ============================================================== -->
+    <div id="scorepage" class="d-none container text-center m-5 p-5 w-50 text-center mx-auto bg-light">
+        <div id="end" >
+          <h1 class="text-left">Your Score is <span id="finalScore"></span></h1>
+          <form class="form-inline mt-4" >
             <form action="" class="form-group">
               <label for="initials"><h3>Your Initials</h3></label>
               <input type="text" name="initials" id="initials" placeholder="initials"/>            
-              <button type="submit" class="btn btn-success btn-sm mb-4 ml-3" id="saveScoreBtn">
-                Save
+              <button type="submit" class="btn btn-success btn-sm ml-3" id="saveScoreBtn">
+                Sumbit
               </button> 
             </form>           
           </form>                  
         </div>
       </div>
-      <div id="highScores" class="d-none">
+      <!-- =========================================================== -->
+      <!-- this page displays after the user submits his/her initials and displays the scores with a user-initials -->
+      <!-- ================================================================ -->
+      <div id="highScores" class="d-none w-50 mx-auto text-center m-5 p-5 bg-light">
         <div id="showscores">
-            <h3>Lead Scorers</h3>
+            <h3>Score lists: initials and scores</h3>
         </div>
         <div>
             <a id="playAgain" class="btn btn-info btn-lg" href="#">Play Again</a>
         </div>
-    </div>
-
+      </div>
+      <!-- ========================================================= -->
     <script src="script.js"></script>
+    <!-- <script src="./score.js"></script> -->
 </body>
 </html>

@@ -41,15 +41,11 @@ const showscoresEL = document.querySelector("#showscores" );
 const playAgainBtn = document.querySelector("#playAgain" );
 
 
-
-
-
-
 let currentQuestion = 0;
 let score = 0;
 let availableQuestions = [];
 let timeLeft = 60;
-let scoresArr = [];
+// let scoresArr = [];
 
 function startQuiz(){
     homeEl.classList.add("d-none");
@@ -98,45 +94,68 @@ function checkAnswer(answer){
    
     if(answer == myQuestions[currentQuestion].answer){        
         score += 10;
-        correctEL.textContent = "correct";
+        correctEL.textContent = "Correct";
+        correctEL.classList.add("text-success");
+        correctEL.classList.remove("text-danger");
     } else {
-        timeLeft-= 20;
-        correctEL.textContent = "incorrect";
+        timeLeft -= 20;
+        correctEL.textContent = "Incorrect";
+        correctEL.classList.add("text-danger");
+        correctEL.classList.remove("text-success");
     }
-    console.log(answer);
-    console.log(myQuestions[currentQuestion].answer);
-    console.log(score);
+    // console.log(answer);
+    // console.log(myQuestions[currentQuestion].answer);
+    // console.log(score);
     currentQuestion++;
     displayQuestion();
 }
 
 function endGame(){
     timeLeft = 0;
+    // localStorage.setItem("score", score)
     finalScoreEL.textContent = score;
     timerEl.classList.add("d-none");
     evalEl.classList.add("d-none");
     mainEl.classList.add("d-none");
     scorepageEl.classList.remove("d-none");
 
+
+
     // localStorage.setItem("score", score);
-    // return location.assign("scores.html");
+    // return location.assign("score.html");
 }
 savescoreBtn.addEventListener("click", function(event){
+    let scoresArr;
     event.preventDefault();
     highScoresDiv.classList.remove("d-none")
     scorepageEl.classList.add("d-none")
-    let initials = initialsInput.value;
-    scoresArr.push({name: initials, yourScore: score});
-    // console.log(scoresArr); 
+    let initials = initialsInput.value.trim();
+    
+    // console.log(scoresArr);     
+    scoresArr = JSON.parse(localStorage.getItem("scores"));
+    if(!scoresArr){
+        scoresArr = [];
+        scoresArr.push({name: initials, yourScore: score});
+        localStorage.setItem("scores", JSON.stringify(scoresArr));
+    } else {
+        scoresArr.push({name: initials, yourScore: score});
+        localStorage.setItem("scores", JSON.stringify(scoresArr));
+    }
 })
- 
-var scoreBoard = JSON.parse(localStorage.getItem("highScores"));
-
-
+// ================================
+// grabbing the array on localStroage
+// =================================
+var scoresArr = JSON.parse(localStorage.getItem("scores")); 
+scoresArr.forEach(function(score){
+    // console.log(score);
+    let newScoreEl = document.createElement("p");
+    newScoreEl.textContent = score.name + " - " + score.yourScore;
+    showscoresEL.appendChild(newScoreEl);
+})
 //=================================
-let newScoreEl = document.createElement("p");
+
 // newScoreEl.textContent = scoresArr[0].name + ": " + scoresArr[0].yourScore;
-showscoresEL.appendChild(newScoreEl);
+
 
 // click the playAgain button to go back to home page
 playAgainBtn.addEventListener("click", function(){
@@ -144,8 +163,6 @@ playAgainBtn.addEventListener("click", function(){
 })
 
 
-// function scoreBoard(){
-localStorage.setItem("highScores", JSON.stringify(scoresArr));
-// }
+
 // startQuiz();//i could do on click on the startQUIZ BUTTON;
 startBtn.addEventListener("click", startQuiz);

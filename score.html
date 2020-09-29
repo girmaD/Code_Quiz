@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>score page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div id="scorepage" class="container text-center mt-5">
+        <div id="end" class="">
+          <h1 >Your Score is <span id="finalScore"></span></h1>
+          <form class="form-inline" >
+            <form action="" class="form-group">
+              <label for="initials"><h3>Your Initials</h3></label>
+              <input type="text" name="initials" id="initials" placeholder="initials"/>            
+              <button type="submit" class="btn btn-success btn-sm ml-3" id="saveScoreBtn">
+                Save
+              </button> 
+            </form>           
+          </form>                  
+        </div>
+      </div>
+      <!-- =========================================================== -->
+      <!-- this page displays after the user submits his/her initials and displays the scores with a user-initials -->
+      <!-- ================================================================ -->
+      <div id="highScores" class="d-none">
+        <div id="showscores">
+            <h3>Lead Scorers</h3>
+        </div>
+        <div>
+            <a id="playAgain" class="btn btn-info btn-lg" href="#">Play Again</a>
+        </div>
+      </div>
+      <!-- ========================================================= -->
+    <script src="./score.js"></script>
+    <!-- <script src="./script.js"></script> -->
+
+    
+</body>
+</html>
