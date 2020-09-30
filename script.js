@@ -112,7 +112,7 @@ function checkAnswer(answer){
     currentQuestion++;
     displayQuestion();
 }
-
+// this function
 function endGame(){
     timeLeft = 0;
     // localStorage.setItem("score", score)
@@ -120,8 +120,7 @@ function endGame(){
     timerEl.classList.add("d-none");
     evalEl.classList.add("d-none");
     mainEl.classList.add("d-none");
-    scorepageEl.classList.remove("d-none");
- 
+    scorepageEl.classList.remove("d-none"); 
 }
 
 
