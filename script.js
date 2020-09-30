@@ -32,7 +32,7 @@ var myQuestions = [
         answer : 2
     }
 ]
-
+// references to HTML elements
 const timeEl = document.querySelector('#timeleft');
 const startBtn = document.querySelector('#startBtn');
 const questionEl = document.querySelector("#question");
@@ -46,7 +46,6 @@ const mainEl = document.querySelector("#main" );
 const timerEl = document.querySelector("#timer" );
 const evalEl = document.querySelector("#evaluation" );
 
-
 const initialsInput = document.querySelector("#initials" );
 const savescoreBtn = document.querySelector("#saveScoreBtn" );
 const scorepageEl = document.querySelector("#scorepage" );
@@ -55,13 +54,14 @@ const highScoresDiv = document.querySelector("#highScores" );
 const showscoresEL = document.querySelector("#showscores" );
 const playAgainBtn = document.querySelector("#playAgain" );
 
-
+// global variables
 let currentQuestion = 0;
 let score = 0;
 let availableQuestions = [];
 let timeLeft = 60;
-// let scoresArr = [];
 
+// function to start the quiz
+// it starts the count down clock and calls the displayQuestion function
 function startQuiz(){
     homeEl.classList.add("d-none");
     timerEl.classList.remove("d-none");
@@ -77,6 +77,8 @@ function startQuiz(){
     }, 1000);
     displayQuestion();
 }
+// this functions makes sures questions are displayed as long as i have queswion is the array
+// if there are no questions, the endGame functions is invoked
 function displayQuestion(){
     if(currentQuestion < myQuestions.length){
         questionEl.textContent = myQuestions[currentQuestion].question;
@@ -88,25 +90,14 @@ function displayQuestion(){
         endGame();
         return;
     }
-    // checkAnswer();
-    // mainEl.addEventListener("click",function(event){
-    //     let element = event.target;
-    //     if(element.matches("button")) {
-    //         if(element == myQuestions[currentQuestion].answer){
-    //             score += 10;
-    //             correctEL.textContent = "correct";
-    //         } else {
-    //             timeLeft-= 1;
-    //             correctEL.textContent = "incorrect";
-    //         }
-    //     }    
-    //         currentQuestion++;
-    //         displayQuestion();
-    // })       
+         
 }
 
-function checkAnswer(answer){
-   
+// This function checks if the chosen answer is correct or not
+// if correct score goes up by 10 points
+// if incorrect time cut by 20 seconds
+// after clicked the next question will be didplayed
+function checkAnswer(answer){   
     if(answer == myQuestions[currentQuestion].answer){        
         score += 10;
         correctEL.textContent = "Correct";
@@ -117,10 +108,7 @@ function checkAnswer(answer){
         correctEL.textContent = "Incorrect";
         correctEL.classList.add("text-danger");
         correctEL.classList.remove("text-success");
-    }
-    // console.log(answer);
-    // console.log(myQuestions[currentQuestion].answer);
-    // console.log(score);
+    }    
     currentQuestion++;
     displayQuestion();
 }
@@ -133,20 +121,17 @@ function endGame(){
     evalEl.classList.add("d-none");
     mainEl.classList.add("d-none");
     scorepageEl.classList.remove("d-none");
-
-
-
-    // localStorage.setItem("score", score);
-    // return location.assign("score.html");
+ 
 }
+
+
 savescoreBtn.addEventListener("click", function(event){
     let scoresArr;
     event.preventDefault();
     highScoresDiv.classList.remove("d-none")
     scorepageEl.classList.add("d-none")
     let initials = initialsInput.value.trim();
-    
-    // console.log(scoresArr);     
+    // console.log(scoresArr);
     scoresArr = JSON.parse(localStorage.getItem("scores"));
     if(!scoresArr){
         scoresArr = [];
@@ -156,17 +141,47 @@ savescoreBtn.addEventListener("click", function(event){
         scoresArr.push({name: initials, yourScore: score});
         localStorage.setItem("scores", JSON.stringify(scoresArr));
     }
+    getScores()
 })
+
+function getScores() {
+    var scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
+    console.log(scoresArr)
+    scoresArr.forEach(function(score){
+        // console.log(score);
+        let newScoreEl = document.createElement("p");
+        newScoreEl.textContent = score.name + " - " + score.yourScore;
+        showscoresEL.appendChild(newScoreEl);
+    })
+}
+// savescoreBtn.addEventListener("click", function(event){
+//     let scoresArr;
+//     event.preventDefault();
+//     highScoresDiv.classList.remove("d-none")
+//     scorepageEl.classList.add("d-none")
+//     let initials = initialsInput.value.trim();
+    
+//     // console.log(scoresArr);     
+//     scoresArr = JSON.parse(localStorage.getItem("scores"));
+//     if(!scoresArr){
+//         scoresArr = [];
+//         scoresArr.push({name: initials, yourScore: score});
+//         localStorage.setItem("scores", JSON.stringify(scoresArr));
+//     } else {
+//         scoresArr.push({name: initials, yourScore: score});
+//         localStorage.setItem("scores", JSON.stringify(scoresArr));
+//     }
+// })
 // ================================
 // grabbing the array on localStroage
 // =================================
-var scoresArr = JSON.parse(localStorage.getItem("scores")); 
-scoresArr.forEach(function(score){
-    // console.log(score);
-    let newScoreEl = document.createElement("p");
-    newScoreEl.textContent = score.name + " - " + score.yourScore;
-    showscoresEL.appendChild(newScoreEl);
-})
+// var scoresArr = JSON.parse(localStorage.getItem("scores")); 
+// scoresArr.forEach(function(score){
+//     // console.log(score);
+//     let newScoreEl = document.createElement("p");
+//     newScoreEl.textContent = score.name + " - " + score.yourScore;
+//     showscoresEL.appendChild(newScoreEl);
+// })
 //=================================
 
 // newScoreEl.textContent = scoresArr[0].name + ": " + scoresArr[0].yourScore;
