@@ -87,12 +87,16 @@ function displayQuestion(){
         choice3.textContent = myQuestions[currentQuestion].choices[2];
         choice4.textContent = myQuestions[currentQuestion].choices[3]; 
     } else {
-        endGame();
-        return;
+        // i want it to display the correct/incorectness of the last question
+        // before it goes to the next step
+        setTimeout(function(){
+            endGame();
+            return;
+        },2000)
+       
     }
          
 }
-
 // This function checks if the chosen answer is correct or not
 // if correct score goes up by 10 points
 // if incorrect time cut by 20 seconds
@@ -103,16 +107,25 @@ function checkAnswer(answer){
         correctEL.textContent = "Correct";
         correctEL.classList.add("text-success");
         correctEL.classList.remove("text-danger");
+        // correct will only be displayed for a second
+        setTimeout(function(){
+            correctEL.textContent = "";
+        },1000)
+        
     } else {
         timeLeft -= 20;
         correctEL.textContent = "Incorrect";
         correctEL.classList.add("text-danger");
         correctEL.classList.remove("text-success");
+        //incorrect will only be displayed for a second
+        setTimeout(function(){
+            correctEL.textContent = "";
+        },1000)
     }    
     currentQuestion++;
     displayQuestion();
 }
-// this function
+// this function makes timeLeft to be zero and makes the appropraite pages to be displayed
 function endGame(){
     timeLeft = 0;
     // localStorage.setItem("score", score)
@@ -123,14 +136,14 @@ function endGame(){
     scorepageEl.classList.remove("d-none"); 
 }
 
-
+//listening to the submit button and saving score and initials in local storage
 savescoreBtn.addEventListener("click", function(event){
     let scoresArr;
     event.preventDefault();
     highScoresDiv.classList.remove("d-none")
     scorepageEl.classList.add("d-none")
     let initials = initialsInput.value.trim();
-    // console.log(scoresArr);
+    // console.log(scoresArr);    
     scoresArr = JSON.parse(localStorage.getItem("scores"));
     if(!scoresArr){
         scoresArr = [];
@@ -140,6 +153,7 @@ savescoreBtn.addEventListener("click", function(event){
         scoresArr.push({name: initials, yourScore: score});
         localStorage.setItem("scores", JSON.stringify(scoresArr));
     }
+    
     getScores()
 })
 
@@ -148,50 +162,16 @@ function getScores() {
     console.log(scoresArr)
     scoresArr.forEach(function(score){
         // console.log(score);
-        let newScoreEl = document.createElement("p");
-        newScoreEl.textContent = score.name + " - " + score.yourScore;
+        let newScoreEl = document.createElement("p");        
+        newScoreEl.textContent = score.name + " - " + score.yourScore;        
         showscoresEL.appendChild(newScoreEl);
     })
 }
-// savescoreBtn.addEventListener("click", function(event){
-//     let scoresArr;
-//     event.preventDefault();
-//     highScoresDiv.classList.remove("d-none")
-//     scorepageEl.classList.add("d-none")
-//     let initials = initialsInput.value.trim();
-    
-//     // console.log(scoresArr);     
-//     scoresArr = JSON.parse(localStorage.getItem("scores"));
-//     if(!scoresArr){
-//         scoresArr = [];
-//         scoresArr.push({name: initials, yourScore: score});
-//         localStorage.setItem("scores", JSON.stringify(scoresArr));
-//     } else {
-//         scoresArr.push({name: initials, yourScore: score});
-//         localStorage.setItem("scores", JSON.stringify(scoresArr));
-//     }
-// })
-// ================================
-// grabbing the array on localStroage
-// =================================
-// var scoresArr = JSON.parse(localStorage.getItem("scores")); 
-// scoresArr.forEach(function(score){
-//     // console.log(score);
-//     let newScoreEl = document.createElement("p");
-//     newScoreEl.textContent = score.name + " - " + score.yourScore;
-//     showscoresEL.appendChild(newScoreEl);
-// })
-//=================================
-
-// newScoreEl.textContent = scoresArr[0].name + ": " + scoresArr[0].yourScore;
-
 
 // click the playAgain button to go back to home page
 playAgainBtn.addEventListener("click", function(){
     return location.assign("index.html");
 })
 
-
-
-// startQuiz();//i could do on click on the startQUIZ BUTTON;
+// listening to the start button to start the quiz
 startBtn.addEventListener("click", startQuiz);
