@@ -33,6 +33,12 @@ THe objective is build a timed coding quiz with multiple-choice questions. This 
 6. Your intials and score will be populated on a new page. This pay also contains a button that gives you the chance to play agian. If you would like to *play again*, click play again button, the game will start all over again
 ![Alt text](./Assets/scoreListsPage.png)
 
+## Technologies Used
+
+- Bootstrap
+- JavaScript
+- CSS
+- HTML
 
 ## Contact
 
