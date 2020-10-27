@@ -40,6 +40,9 @@ THe objective is build a timed coding quiz with multiple-choice questions. This 
 - CSS
 - HTML
 
+## License
+- MIT
+
 ## Contact
 
 Should you have any questions about this repo or the deployed page, contact me on [girma.derib@gmail.com](mailto:girma.derib@gmail.com)
