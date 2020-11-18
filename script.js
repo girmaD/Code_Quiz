@@ -159,10 +159,23 @@ savescoreBtn.addEventListener("click", function(event){
 
 function getScores() {
     var scoresArr = JSON.parse(localStorage.getItem("scores")) || [];
-    console.log(scoresArr)
+    //a function to sort the scoresArr
+    function compare(a, b) {
+        let scoreA = a.yourScore;
+        let scoreB = b.yourScore;
+        let comparison = 0;
+        if(scoreB > scoreA) {
+            comparison = 1;
+        } else {
+            comparison = -1;
+        }
+        return comparison;
+    }  
+    //Sort the scoresArr based on 'yourScore' using the compare function
+    scoresArr = scoresArr.sort(compare);
+    // loop through the arr and display name and yourScore properties
     scoresArr.forEach(function(score){
-        // console.log(score);
-        let newScoreEl = document.createElement("p");        
+        let newScoreEl = document.createElement("p");              
         newScoreEl.textContent = score.name + " - " + score.yourScore;        
         showscoresEL.appendChild(newScoreEl);
     })
